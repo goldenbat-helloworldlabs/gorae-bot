@@ -1,0 +1,27 @@
+# Step 1 manifest: creates the app with scopes only. Slack verifies request
+# URLs live when you save them, and there's no deployed URL yet on first
+# creation - so the Event Subscriptions request URL and the OAuth redirect
+# URL (for the "Sign in with Slack" dashboard login) are added afterwards
+# from the app dashboard once `npm run deploy` (Vercel) gives you a URL.
+# See README.md for the exact order.
+display_information:
+  name: 칭찬고래
+  description: 팀원에게 고래 이모지로 칭찬을 보내는 사내 봇 (하루 5개 제한, 관리자 대시보드)
+  background_color: "#1264A3"
+features:
+  bot_user:
+    display_name: 칭찬고래
+    always_online: true
+oauth_config:
+  scopes:
+    bot:
+      - chat:write
+      - channels:history
+      - groups:history
+      - users:read
+settings:
+  interactivity:
+    is_enabled: false
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false
